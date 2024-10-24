@@ -5,6 +5,9 @@ const countdownEl = document.getElementById('countdown');
 const countdownElTitle = document.getElementById('countdown-title');
 const timeElements = document.querySelectorAll('span');
 const countdownBtn = document.getElementById('countdown-button');
+const completeEl = document.getElementById('complete');
+const completeElInfo = document.getElementById('complete-info');
+const completeBtn =  document.getElementById('complete-button');
 
 let countdownTitle = '';
 let countdownDate = '';
@@ -85,6 +88,7 @@ function reset(){
     // Reset Values
     countdownTitle = '';
     countdownDate = '';
+    localStorage.removeItem('countdown');
 }
 
 function restorePreviousCountdown(){
@@ -94,7 +98,8 @@ function restorePreviousCountdown(){
         savedCountdown =JSON.parse(localStorage.getItem('countdown'));
         countdownTitle =  savedCountdown.title;
         countdownDate = savedCountdown.date
-        coun
+        countdownValue = new Date(countdownDate).getTime();
+        updateDOM();
     }
 }
 
@@ -102,3 +107,8 @@ function restorePreviousCountdown(){
 // Event Listener
 countdownForm.addEventListener('submit',updateCountdown);
 countdownBtn.addEventListener('click', reset);
+completeBtn.addEventListener('click', reset);
+
+// On load , check localstorage
+
+restorePreviousCountdown();
