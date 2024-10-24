@@ -11,7 +11,7 @@ const completeBtn =  document.getElementById('complete-button');
 
 let countdownTitle = '';
 let countdownDate = '';
-let countdownValue = Date;
+let countdownValue = new  Date();
 const second  = 1000;
 const minute = second * 60;
 const hour = minute * 60;
