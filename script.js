@@ -22,6 +22,7 @@ let savedCountdown;
 // set Date Input Min with todays date
 
 const today = new Date().toISOString().split('T')[0];
+
 dateEl.setAttribute('min', today);
 
 // pOPULATE cOUNTDOWN / COMPLETE UI
@@ -64,10 +65,13 @@ function updateCountdown(e){
         title:countdownTitle,
         date:countdownDate,
     };
+
     // Converting oject to strings in Local Storage
+
     localStorage.setItem('countdown', JSON.stringify(savedCountdown));
     
     // check for valid dates
+
     if(countdownDate === ''){
         alert('please select a date for the countdown.')
     }
@@ -81,11 +85,14 @@ function updateCountdown(e){
 // Reset All VALUES
 function reset(){
     // hide Countdown , show input
+
     countdownEl.hidden= true;
     inputContainer.hidden = false;
     // Stop the Countdown
+
     clearInterval(countdownActive);
     // Reset Values
+    
     countdownTitle = '';
     countdownDate = '';
     localStorage.removeItem('countdown');
